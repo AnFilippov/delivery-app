@@ -13,8 +13,8 @@ function App() {
           <Router>
             <Header />
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/cart" element={<Basket />} />
+              <Route path="/delivery-app/" element={<HomePage />} />
+              <Route path="delivery-app/cart" element={<Basket />} />
             </Routes>
           </Router>
         </div>
