@@ -5,7 +5,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
 
-URL for test app http://u132652.test-handyhost.ru/
+URL for test app https://anfilippov.github.io/delivery-app/#/
 
 In the project directory, you can run:
 

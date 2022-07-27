@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-
-  return (
+    return (
     <header className='store-header'>
       <div className='container btn-header'>               
         <Link to="/" className='button-text button button-cart'>Home page</Link>
