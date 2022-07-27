@@ -1,6 +1,7 @@
 import React from "react";
 
 const RestaurantCard = ({onChange, ...props }) => {
+let show = true;
 
   const {
     name,
@@ -16,7 +17,10 @@ const RestaurantCard = ({onChange, ...props }) => {
   const img = require(`../../assets/${image}`);
 
   const handleClick = () => {
-  onChange(products);
+    if(show) {
+      onChange(products);
+    }
+    
 }  
 
   return (

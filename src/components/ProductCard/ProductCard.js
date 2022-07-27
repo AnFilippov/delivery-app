@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const ProductCard = (props) => {
+const ProductCard = ({onActive, prodList, nameProd, ...props}) => {
 const user = "User";
 
   const {  
@@ -15,19 +15,20 @@ const user = "User";
 
   
   const handleAddToBasket = () => {    
-
-    const storageData = localStorage.getItem(user);    
+    
+    const storageData = localStorage.getItem(user);
 
     let data = [
       {
         id,
         title: name,
         cost: price,
-        count: 1
+        count: 1,
+        nameRest: prodList.partnerName,
+        nameProd: nameProd
       }
     ];  
 
-    
     if (!!storageData) {
 
       const allData = JSON.parse(storageData);
@@ -49,6 +50,9 @@ const user = "User";
         localStorage.setItem(user, JSON.stringify(data));
       }
     }
+
+    onActive(prodList.partnerName);
+
   }
 
  
@@ -69,7 +73,7 @@ const user = "User";
         </div>
 
         <div className='card-buttons'>
-          <button className='button button-primary button-add-cart' onClick={handleAddToBasket}>
+          <button className='button button-primary button-add-cart' onClick={handleAddToBasket} >
             <span className='button-card-text'>to Cart</span>
             <span className='button-cart-svg'></span>
           </button>

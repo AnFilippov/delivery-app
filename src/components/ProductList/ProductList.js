@@ -4,15 +4,23 @@ import ProductCard from "../ProductCard/ProductCard";
 import Spinner from "../Spinner/Spinner";
 
 
-const ProductList = ({prodName}) => {  
+const ProductList = ({onActive, prodName}) => {  
   const rest = usePageData('restaurants');
   const nameProd = prodName.nameProd;
+  
+  const storageData = localStorage.getItem('User');
+  const allData = JSON.parse(storageData);
+  const obRest = allData?.find(item => item.nameProd);
+  
+  let defaultList = null;
 
-let defaultList = undefined;
-
+ if (obRest && rest) {
+    defaultList = rest[obRest.nameProd];
+ } else 
 if(rest) {
   defaultList = rest.pizzaPlus;  
 }
+
 let productList = defaultList;
 
 if (nameProd) {
@@ -22,6 +30,7 @@ if (nameProd) {
 if (!productList) {
   return <Spinner /> ;
 }
+
 
 const minPrice = Math.min.apply(null, productList?.data.map(el => el.price));
 
@@ -38,7 +47,7 @@ const minPrice = Math.min.apply(null, productList?.data.map(el => el.price));
       </div>
       <div className="cards menu__cards">
         {productList?.data.map(foodItem => {
-          return <ProductCard key={foodItem.id} {...foodItem} />
+          return <ProductCard key={foodItem.id} {...foodItem} prodList = {productList} onActive = {onActive} nameProd={nameProd}/>
         })}
 
       </div>
